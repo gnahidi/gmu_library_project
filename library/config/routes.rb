@@ -1,13 +1,21 @@
 Library::Application.routes.draw do
-  get "reservations/new"
-  post "reservations/new" => "reservations#new"
-  get "reservations/edit"
-  get "reservations/destroy"
-  get "reservations/create"
-  get "reservations/update"
-  get "reservations/show"
-  get 'reservations' => 'reservations#index'
-  post 'reservations' => 'reservations#index'
+#  get "reservations/new"
+#  post "reservations/new" => "reservations#new"
+#  get "reservations/edit"
+#  get "reservations/destroy"
+#  get "reservations/create"
+#  get "reservations/update"
+#  get "reservations/show"
+#  get 'reservations' => 'reservations#index'
+#  post 'reservations' => 'reservations#index'
+#  delete "/reservations/:id"        => "reservations#destroy"
+
+  get    "/reservations"            => "reservations#index",    as: 'reservations'
+  get    "/reservations/new"        => "reservations#new",      as: 'new_reservation'
+  get    "/reservations/:id"        => "reservations#show",     as: 'reservation'
+  post   "/reservations"            => "reservations#create"
+  get    "/reservations/:id/edit"   => "reservations#edit",     as: 'edit_reservation'
+  patch  "/reservations/:id"        => "reservations#update"
   delete "/reservations/:id"        => "reservations#destroy"
 
   get 'admin' => 'admin#index'
@@ -28,6 +36,7 @@ Library::Application.routes.draw do
   patch  "/books/:id"        => "books#update"
   delete "/books/:id"        => "books#destroy"
 
+<<<<<<< HEAD
 resources :authors
 #  get    "/authors"          => "authors#index",  as: 'authors'
 #  get    "/authors/new"      => "authors#new",    as: 'new_author'
@@ -36,6 +45,15 @@ resources :authors
 #  get    "/authors/:id/edit" => "authors#edit",   as: 'edit_author'
 #  patch  "/authors/:id"      => "authors#update"
 #  delete "/authors/:id"      => "authors#destroy"   
+=======
+  delete "/authors/:id"      => "authors#destroy"   
+  get    "/authors"          => "authors#index",  as: 'authors'
+  get    "/authors/new"      => "authors#new",    as: 'new_author'
+  get    "/authors/:id"      => "authors#show",   as: 'author'
+  post   "/authors"          => "authors#create"
+  get    "/authors/:id/edit" => "authors#edit",   as: 'edit_author'
+  patch  "/authors/:id"      => "authors#update"
+>>>>>>> 924f5b05991b9da9f5e0537e3fba74b118c4ff47
 
 
   resources :books do
