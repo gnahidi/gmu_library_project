@@ -1,6 +1,7 @@
 class AuthorsController < ApplicationController
+
   skip_before_action :authorize
-  before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :set_author, only: [ :show, :edit, :update, :destroy ]
   
   def set_author
     @author = Author.find(params[:id])
@@ -12,7 +13,6 @@ class AuthorsController < ApplicationController
   end
 
   def show
-  	@author = Author.find(params[:id])
   end
 
   def new
@@ -20,19 +20,23 @@ class AuthorsController < ApplicationController
   end
 
   def create
-  	@author = Author.new(author_params)
-  	@author.save
-  	redirect_to @author
+    @author = Author.new(author_params)
+    if @author.save
+      redirect_to @author, notice: "#{@author.name} was created!!"
+    else
+      render :new
+    end
   end
 
   def edit
-  	@author = Author.find(params[:id])
   end
 
   def update
-  	@author = Author.find(params[:id])
-  	@author.update(author_params)
-  	redirect_to @author
+    if @author.update(author_params)
+      redirect_to @author, notice: "#{@author.name} was updated!!"
+    else
+      render :new
+    end
   end
 
   def destroy

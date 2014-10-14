@@ -28,19 +28,22 @@ Library::Application.routes.draw do
   patch  "/books/:id"        => "books#update"
   delete "/books/:id"        => "books#destroy"
 
-  delete    "/authors/:id"      => "authors#destroy"   
-  get    "/authors"          => "authors#index",  as: 'authors'
-  get    "/authors/new"      => "authors#new",    as: 'new_author'
-  get    "/authors/:id"      => "authors#show",   as: 'author'
-  post   "/authors"          => "authors#create"
-  get    "/authors/:id/edit" => "authors#edit",   as: 'edit_author'
-  patch  "/authors/:id"      => "authors#update"
+resources :authors
+#  get    "/authors"          => "authors#index",  as: 'authors'
+#  get    "/authors/new"      => "authors#new",    as: 'new_author'
+#  get    "/authors/:id"      => "authors#show",   as: 'author'
+#  post   "/authors"          => "authors#create"
+#  get    "/authors/:id/edit" => "authors#edit",   as: 'edit_author'
+#  patch  "/authors/:id"      => "authors#update"
+#  delete "/authors/:id"      => "authors#destroy"   
 
 
   resources :books do
      get 'page/:page', :action => :index, :on => :collection
   end
+
   root 'books#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
