@@ -1,0 +1,11 @@
+<%= form_for(@book) do |f| %>
+<%= render 'shared/validation_errors', object: @book %>
+<%= f.label :title %> <%= f.text_field :title, autofocus: true %><br />
+<%= f.label :genre %> <%= f.text_field :genre %> <br />
+<%= f.label :pages %> <%= f.text_field :pages %> <br />
+<%= f.label :abstract %> <%= f.text_field :abstract %> <br />
+<p>
+	<%= f.submit %>
+	<%= button_to 'Cancel', books_path %>
+</P>
+<% end %>
