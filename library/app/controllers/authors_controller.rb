@@ -1,5 +1,7 @@
 class AuthorsController < ApplicationController
 
+  skip_before_action :authorize
+
   def index
   	@available_at = Time.now
   	@authors = Author.all
@@ -27,6 +29,11 @@ class AuthorsController < ApplicationController
   	@author = Author.find(params[:id])
   	@author.update(author_params)
   	redirect_to @author
+  end
+
+  def destroy
+    @author = Author.find(params[:id])
+    @author.destroy
   end
 
   private
