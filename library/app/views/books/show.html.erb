@@ -3,6 +3,7 @@
   <header>
     <h2><%= @book.title %></h2>
   </header>
+  <%= image_tag @book.image_cover_url %>  
   <p><label>Abstract:</label> <%= @book.abstract %></p>
   <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
   <p><label>Genre:</label> <%= @book.genre %></p>

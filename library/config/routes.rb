@@ -9,7 +9,11 @@ Library::Application.routes.draw do
   get "/books/:id/edit" => "books#edit", as: 'edit_book'
   patch "/books/:id" => "books#update"
   delete "/books/:id" => "books#destroy"
-  
+
+  resources :books do
+     get 'page/:page', :action => :index, :on => :collection
+  end
+  #root 'books#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

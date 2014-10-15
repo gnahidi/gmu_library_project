@@ -1,8 +1,8 @@
-<h1>Books</h1>
-
+<h1>All Books</h1>
 <ol>
   <% @books.each do |book| %>
-  <li><%= link_to(book.title, book) %> by <%= book.abstract %><br />
+  <%= image_tag book.image_cover_url %>  
+  <li><%= link_to(book.title, book) %> by <%= book.author_id %><br />
   	</li>
 <% end %>
 </ol>
