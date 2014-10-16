@@ -1,4 +1,6 @@
 Library::Application.routes.draw do
+  resources :users
+
   root 'session#index'
   get "/session" => "session#index", as: 'session'
 
