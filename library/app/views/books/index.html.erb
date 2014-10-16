@@ -2,7 +2,7 @@
 <ol>
   <% @books.each do |book| %>
   <%= image_tag book.image_cover_url %>  
-  <%= link_to(book.title, book) %> by <%= book.author_id %><br />
+  <%= link_to(book.title, book) %> by <%= book.author.name %><br />
   	<% end %>
 </ol>
 <%= paginate @books %>
