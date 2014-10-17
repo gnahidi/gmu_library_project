@@ -46,7 +46,7 @@ end
 private
 
 def book_params
-	params.require(:book).permit(:image_cover_url, :title, :genre, :pages, :abstract)
+	params.require(:book).permit(:title,:author_id , :isbn, :abstract, :pages,:total_in_library,:genre,:published_on ,:image_cover_url )
 end
 
-end
+end 
