@@ -5,11 +5,13 @@
     <h2><%= @author.name %></h2>
   </header>
 
-  <p><label>Date of Birth:     <%= @author.dob                 %></label></p><br />
-  <p><label>Nationality:<%= @author.nationality         %></label></p><br />
-  <p><label>Awards:     <%= @author.awards              %></p></label><br />
-  <p><label>Biography:  <%= @author.biography           %></label></p><br />
-  <p><label>Photo:      <%= image_tag @author.image_url %></label></p><br />
+  <p><label>Birthdate:   <%= @author.dob                 %></label></p><br />
+  <p><label>Nationality: <%= @author.nationality         %></label></p><br />
+  <p><label>Awards:      <%= @author.awards              %></label></p><br />
+  <p><label>Biography:   <%= @author.biography           %></label></p><br />
+  <p><label>Photo:       <%= image_tag @author.image_url %></label></p><br />
 
 </article>
+
+| <%= link_to 'Edit', edit_author_path(@author) %>
 
