@@ -1,0 +1,15 @@
+<% content_for :name, @author.name %>
+<article class="author">
+
+  <header>
+    <h2><%= @author.name %></h2>
+  </header>
+
+  <p><label>Date of Birth:     <%= @author.dob                 %></label></p><br />
+  <p><label>Nationality:<%= @author.nationality         %></label></p><br />
+  <p><label>Awards:     <%= @author.awards              %></p></label><br />
+  <p><label>Biography:  <%= @author.biography           %></label></p><br />
+  <p><label>Photo:      <%= image_tag @author.image_url %></label></p><br />
+
+</article>
+

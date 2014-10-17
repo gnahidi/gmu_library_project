@@ -7,10 +7,14 @@
   <p><label>Abstract:</label> <%= @book.abstract %></p>
   <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
   <p><label>Genre:</label> <%= @book.genre %></p>
+  <p><label>Published On:</label><%= @book.published_on %>
+  <p><label>Author:</label><%= link_to @book.author.name %> <br />
 </article>
 
 <%= link_to 'All Books', books_path %>
 | <%= link_to 'Edit', edit_book_path(@book) %>
 
 <%= button_to 'Delete ', @book, method: :delete, data: { confirm: 'Are you sure?'} %>
+
+<%= link_to "All Authors", authors_path %>
 
