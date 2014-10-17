@@ -2,7 +2,9 @@
 <p>On file as of <%= formatted_time(@available_at) %></p>
 <ol>
   <% @authors.each do |author| %>
-    <li><%= author.name %><br/></li>
+    <li><%= link_to(author.name, author) %><br/></li>
   <% end %>
 </ol>
+
+
 
