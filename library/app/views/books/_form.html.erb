@@ -2,12 +2,8 @@
 <%= render 'shared/validation_errors', object: @book %>
 <%= f.label :Title %> <%= f.text_field :title, autofocus: true %><br />
 <p>
-  <%= f.label :Author %> 
-  <select id="author_id" name="name">
-  <option value="1">Peter</option>
-  <option value="2">Joseph</option>
-</select>
-
+  <%= f.label :Author %>
+  <%= f.collection_select :author_id, Author.all, :id , :name  %>
 </p>
 <%= f.label :ISBN %> <%= f.text_field :isbn %> <br />
 <%= f.label :Abstract %> <%= f.text_field :abstract %> <br />
