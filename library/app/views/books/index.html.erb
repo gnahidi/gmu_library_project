@@ -3,7 +3,7 @@
 <ol>
   <% @books.each do |book| %>
   <%= image_tag book.image_cover_url %><br />
-  <p><label>Title:</label><%= link_to(book.title, book) %> by <%= book.author.name %><br />
+  <p><label>Title:</label><%= link_to(book.title, book) %> <br />
   <p><label>Genre:</label><%= book.genre %><br />
   <p><label>Abstract:</label><%= book.abstract %> <br />
   <p><label>Pages:</label>Total Number of pages are : <%= book.pages %><br />
