@@ -7,9 +7,6 @@ Library::Application.routes.draw do
   end
   resources :users
 
-  #root 'session#index'
-  #get "/session" => "session#index", as: 'session'
-
   get    "/books"          => "books#index",    as: 'books'
   get    "/books/new"      => "books#new",      as: 'new_book'
   get    "/books/:id"      => "books#show",     as: 'book'
@@ -26,8 +23,6 @@ Library::Application.routes.draw do
      get 'page/:page', :action => :index, :on => :collection
   end
   #root 'books#index'
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
