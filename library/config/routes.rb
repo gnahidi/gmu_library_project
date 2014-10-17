@@ -7,8 +7,8 @@ Library::Application.routes.draw do
   end
   resources :users
 
-  root 'session#index'
-  get "/session" => "session#index", as: 'session'
+  #root 'session#index'
+  #get "/session" => "session#index", as: 'session'
 
   get    "/books"          => "books#index",    as: 'books'
   get    "/books/new"      => "books#new",      as: 'new_book'
