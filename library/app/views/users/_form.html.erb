@@ -1,5 +1,9 @@
 <div class="depot_form">
+<<<<<<< HEAD
   <%= form_for(@user) do |f| %>
+=======
+<%= form_for(@user) do |f| %>
+>>>>>>> 8d3127353a32a2e795c348863962c4265cfa31b3
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -16,6 +20,7 @@
     <legend>Enter User Details</legend>
 
   <div class="field">
+<<<<<<< HEAD
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
@@ -26,10 +31,27 @@
   <div>
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
+=======
+    <%= f.label :name, 'Name' %><br>
+    <%= f.text_field :name, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :password, 'Password:' %><br>
+    <%= f.password_field :password, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation, 'Confirm:' %><br>
+    <%= f.password_field :password_confirmation, size: 40 %>
+>>>>>>> 8d3127353a32a2e795c348863962c4265cfa31b3
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+<<<<<<< HEAD
 <% end %>
 </fieldset>
+=======
+</fieldset>
+<% end %>
+>>>>>>> 8d3127353a32a2e795c348863962c4265cfa31b3
 </div>

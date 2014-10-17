@@ -1,8 +1,13 @@
 <h1>All Books</h1>
 <ol>
   <% @books.each do |book| %>
-  <%= image_tag book.image_cover_url %>  
+  <%= image_tag book.image_cover_url %><br />
   <%= link_to(book.title, book) %> by <%= book.author.name %><br />
+  <%= book.genre %><br />
+  <%= book.abstract %> <br />
+  Total Number of pages are : <%= book.pages %><br />
+  This book was published on :  <%= book.published_on %> <br />
+  Currently we have total of <%=book.total_in_library %> in the library <br />
   	<% end %>
 </ol>
 <%= paginate @books %>

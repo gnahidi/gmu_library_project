@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+<<<<<<< HEAD
         format.html { redirect_to users_url, 
           notice: "User #{@user.name} was successfully created." }
         format.json { render action: 'show', 
@@ -36,6 +37,13 @@ class UsersController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @user.errors, 
           status: :unprocessable_entity }
+=======
+        format.html { redirect_to users_url, notice: 'User was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+>>>>>>> 8d3127353a32a2e795c348863962c4265cfa31b3
       end
     end
   end
@@ -45,8 +53,12 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+<<<<<<< HEAD
         format.html { redirect_to @users_url, 
           notice: "User #{@user.name} was successfully updated." }
+=======
+        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
+>>>>>>> 8d3127353a32a2e795c348863962c4265cfa31b3
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

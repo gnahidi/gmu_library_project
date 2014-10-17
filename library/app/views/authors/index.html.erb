@@ -2,7 +2,7 @@
 <p>On file as of <%= formatted_time(@available_at) %></p>
 <ol>
   <% @authors.each do |author| %>
-    <li><%= book %></li>
+    <li><%= author.name %><br/></li>
   <% end %>
 </ol>
 
