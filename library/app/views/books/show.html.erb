@@ -7,6 +7,8 @@
   <p><label>Abstract:</label> <%= @book.abstract %></p>
   <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
   <p><label>Genre:</label> <%= @book.genre %></p>
+  <p><label>Published On:</label><%= @book.published_on %>
+  <p><label>Author:</label><%= @book.author.name %> <br />
 </article>
 
 <%= link_to 'All Books', books_path %>
