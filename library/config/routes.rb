@@ -1,4 +1,11 @@
 Library::Application.routes.draw do
+  get "reservations/new"
+  get "reservations/edit"
+  get "reservations/destroy"
+  get "reservations/create"
+  get "reservations/update"
+  get "reservations/show"
+  get "reservations/index"
   get 'admin' => 'admin#index'
   controller :sessions do 
     get 'login' => :new
