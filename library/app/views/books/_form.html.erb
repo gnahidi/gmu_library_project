@@ -1,10 +1,29 @@
 <%= form_for(@book) do |f| %>
 <%= render 'shared/validation_errors', object: @book %>
-<%= f.label :title %> <%= f.text_field :title, autofocus: true %><br />
-<%= f.label :genre %> <%= f.text_field :genre %> <br />
-<%= f.label :pages %> <%= f.text_field :pages %> <br />
-<%= f.label :Cover_Image %> <%= f.text_field :image_cover_url %> <br />
-<%= f.label :abstract %> <%= f.text_field :abstract %> <br />
+<%= f.label :Title %> <%= f.text_field :title, autofocus: true %><br />
+<p>
+  <%= f.label :Author %> 
+  <select id="author_id" name="name">
+  <option value="1">Peter</option>
+  <option value="2">Joseph</option>
+</select>
+
+</p>
+<%= f.label :ISBN %> <%= f.text_field :isbn %> <br />
+<%= f.label :Abstract %> <%= f.text_field :abstract %> <br />
+<%= f.label :Pages %> <%= f.text_field :pages %> <br />
+<%= f.label :Total_in_Library %> <%= f.text_field :total_in_library %> <br />
+<P>
+<%= f.label :Genre %> 
+<%= f.select :genre, Book::GENRE, { prompt: "Pick One" } %> <br />
+</P>
+<P>
+<%= f.label :Published_On %>
+ <span class="date">
+      <%= f.date_select :published_on , :order => [:month, :day, :year] %>
+</span>
+</P>
+<%= f.label :Image_Cover_URL%> <%= f.text_field :image_cover_url %> <br />
 <p>
 	<%= f.submit %>
 	<%= button_to 'Cancel', books_path %>
