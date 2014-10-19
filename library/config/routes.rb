@@ -1,5 +1,6 @@
 Library::Application.routes.draw do
   get "reservations/new"
+  post "reservations/new" => "reservations#new"
   get "reservations/edit"
   get "reservations/destroy"
   get "reservations/create"
