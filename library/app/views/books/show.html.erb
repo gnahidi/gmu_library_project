@@ -11,10 +11,11 @@
   <p><label>Author:</label><%= link_to @book.author.name, @book.author %> <br />
 </article>
 
+<%= button_to 'Reserve', reservations_path %>
+<% if session[:id] and session[:admin] %>
 <%= link_to 'All Books', books_path %>
 | <%= link_to 'Edit', edit_book_path(@book) %>
-
 <%= button_to 'Delete ', @book, method: :delete, data: { confirm: 'Are you sure?'} %>
-
 <%= link_to "All Authors", authors_path %>
+<% end %>
 
