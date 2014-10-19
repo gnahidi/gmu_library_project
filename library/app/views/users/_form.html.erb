@@ -16,7 +16,11 @@
     <legend>Enter User Details</legend>
 
   <div class="field">
-    <%= f.label :name, 'Name' %><br>
+    <%= f.label :name, 'Full Name:' %><br>
+    <%= f.text_field :name, size: 40 %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id, 'Account:' %><br>
     <%= f.text_field :name, size: 40 %>
   </div>
   <div class="field">

@@ -10,8 +10,10 @@ Library::Application.routes.draw do
   controller :sessions do 
     get 'login' => :new
     post 'login' => :create
-    delete 'login' => :destroy
+    delete 'logout' => :destroy
   end
+  get "sessions/create"
+  get "sessions/destroy"
   resources :users
 
   get    "/books"            => "books#index",    as: 'books'
