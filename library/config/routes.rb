@@ -8,6 +8,8 @@ Library::Application.routes.draw do
   get "reservations/show"
   get 'reservations' => 'reservations#index'
   post 'reservations' => 'reservations#index'
+  delete "/reservations/:id"        => "reservations#destroy"
+
   get 'admin' => 'admin#index'
   controller :sessions do 
     get 'login' => :new

@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
 
-  def set_reservation
+def set_reservation
   @reservation = Reservation.find(params[:id])
 end
 
@@ -39,7 +39,7 @@ end
 
 def destroy
   @reservation.destroy
-  redirect_to books_url
+  redirect_to reservation_url
 end
 
 private
