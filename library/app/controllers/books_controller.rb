@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
-before_action :set_book, only: [:show, :edit, :update, :destroy]
-
-
+	before_action :set_book, only: [:show, :edit, :update, :destroy]
+	
 def set_book
 	@book = Book.find(params[:id])
 end
