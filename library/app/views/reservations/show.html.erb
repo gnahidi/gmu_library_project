@@ -1,17 +1,15 @@
 <h1>Reservations#show</h1>
 <p>Find me in app/views/reservations/show.html.erb</p>
-<% content_for :title, @book.title %>
-<article class="book">
+<% content_for :title, @reservation.book.title %>
+<article class="reservation">
   <header>
-    <h2><%= @book.title %></h2>
+    <h2><%= @reservation.book.book_id %></h2>
   </header>
-  <%= image_tag @book.image_cover_url %>  
-  <p><label>Abstract:</label> <%= @book.abstract %></p>
-  <p><label>Pages:</label> <%= number_with_delimiter(@book.pages) %></p>
-  <p><label>Genre:</label> <%= @book.genre %></p>
-  <p><label>Published On:</label><%= @book.published_on %>
-  <p><label>Author:</label><%= link_to @book.author.name, @book.author %> <br />
-</article>
+  <%= image_tag @reservation.book.image_cover_url %>  
+  <p><label>Author:</label> <%= @reservation.book.author.name %></p>
+  <p><label>Reserved On:</label> <%= @reservation.reserved_on %></p>
+  <p><label>Due on:</label> <%= @reservation.due_on %></p>
+  </article>
 <%= button_to 'Return Book', @reservation,
 
                method: :delete,

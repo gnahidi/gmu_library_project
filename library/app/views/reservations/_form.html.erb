@@ -1,9 +1,10 @@
 <%= form_for(@reservation) do |f| %>
 <%= render 'shared/validation_errors', object: @reservation %>
-<%= f.label :Title %> <%= f.text_field :title, autofocus: true %><br />
+<%= f.label :Title %> 
+<%= f.collection_select :book_id, Book.all, :id , :title  %><br />
 <p>
   <%= f.label :Author %>
-  <%= f.collection_select :author_id, Author.all, :id , :name  %>
+  <%= f.collection_select :user_id, User.all, :id , :name  %>
 </p>
 
 <P>
@@ -12,12 +13,15 @@
       <%= f.date_select :reserved_on , :order => [:month, :day, :year] %>
 </span>
 </P>
-<%= f.label :due_On %>
+<p>
+<%= f.label :due_on %>
  <span class="date">
-      <%= f.date_select :due_On , :order => [:month, :day, :year] %>
+      <%= f.date_select :due_on , :order => [:month, :day, :year] %>
 </span>
+</p>
 <p>
 	<%= f.submit %>
 	<%= button_to 'Cancel', reservations_path %>
 </P>
 <% end %>
+

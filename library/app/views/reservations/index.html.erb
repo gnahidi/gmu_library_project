@@ -1,13 +1,12 @@
 <article class="reservation">
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
 <h1>All Reservations</h1>
-<% @reservations.each do |reservation| %>
 <ol>
-  <p><label>reserved_on:</label><%= reservation.reserved_on %> <br />
-  <p><label>due_on:</label><%= reservation.due_on %><br />
+	<% @reservations.each do |reservation| %>
+ 	<%= image_tag @reservation.book.image_cover_url %><br />
+  	<p><label>reserved_on:</label><%= @reservation.reserved_on %> <br />
+  	<p><label>due_on:</label><%= @reservation.due_on %><br />
+  	<% end %>
 </ol>
-<% end %>
 </article>
 <%= paginate @reservations %>
 
