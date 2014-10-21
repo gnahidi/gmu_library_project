@@ -28,7 +28,7 @@ Library::Application.routes.draw do
   patch  "/books/:id"        => "books#update"
   delete "/books/:id"        => "books#destroy"
 
-  get    "/authors/:id"      => "authors#destroy"   
+  delete    "/authors/:id"      => "authors#destroy"   
   get    "/authors"          => "authors#index",  as: 'authors'
   get    "/authors/new"      => "authors#new",    as: 'new_author'
   get    "/authors/:id"      => "authors#show",   as: 'author'

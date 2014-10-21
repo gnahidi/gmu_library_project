@@ -1,12 +1,6 @@
 class AuthorsController < ApplicationController
   skip_before_action :authorize
-  before_action :set_author, only: [:update, :edit, :destroy]
-
-  def set_author
-    @author = Author.find(params[:id])
-  end
-
-
+  
   def index
   	@available_at = Time.now
   	@authors = Author.all
@@ -36,15 +30,11 @@ class AuthorsController < ApplicationController
   	redirect_to @author
   end
 
-#  def destroy
-#    @author = Author.find(params[:id])
-#    @author.destroy
-#  end
-
   def destroy
+    @author = Author.find(params[:id])
     @author.destroy
-    redirect_to authors_path
   end
+
 
   private
 
