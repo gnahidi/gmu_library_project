@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20141017235922) do
     t.string   "name"
     t.string   "user_id"
     t.string   "password"
-    t.string   "password_digest"
+    t.string   "password_confirmation"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"

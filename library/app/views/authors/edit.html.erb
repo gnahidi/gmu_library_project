@@ -1,11 +1,3 @@
 <h1>Editing <%= @author.name %></h1>
-<%= form_for(@author) do |f| %>
-  <%= f.label :name        %> <%= f.text_field :name, autofocus: true %><br />
-  <%= f.label :dob         %> <%= f.text_field :dob                   %><br />
-  <%= f.label :nationality %> <%= f.text_field :nationality           %><br />
-  <%= f.label :awards      %> <%= f.text_field :awards                %><br />
-  <%= f.label :biography   %> <%= f.text_field :biography             %><br />
-  <%= f.label :image_url   %> <%= f.text_field :image_url             %><br />
-  <p><%= f.submit %></p>
-<% end %>
+<%= render 'form' %>
 

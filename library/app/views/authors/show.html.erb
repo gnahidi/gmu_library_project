@@ -1,3 +1,5 @@
+<%= render 'shared/flashes' %>
+
 <% content_for :name, @author.name %>
 <article class="author">
 
@@ -13,6 +15,10 @@
 
 </article>
 
-<%= link_to 'All Authors', authors_path %>
+  <%= link_to 'All Authors', authors_path %>
+
 | <%= link_to 'Edit', edit_author_path(@author) %>
-<%= button_to 'Delete ', @author, method: :delete, data: { confirm: 'Are you sure?'} %>
+
+  <%= button_to 'Delete ', @author,
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' } %>
