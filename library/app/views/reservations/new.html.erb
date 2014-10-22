@@ -1,7 +1,31 @@
 <h1>New Reservation</h1>
-<p>Are you sure you would like to reserve this book?</p>
-	<br><p><%= button_to 'Confirm', reservations_path %><p>
-</ol>
-<%= render 'form' %>
 
+<p>You are reserving a book </p>
+	<br>
 
+<%= form_for([@book, @reservation]) do |f| %>
+<%= render 'shared/validation_errors', object: @reservation %>
+<%= f.label :Book_Title %> 
+<%= f.collection_select :book_id, Book.all, :id , :title  %><br />
+<p>
+  <%= f.label :User_name %>
+  <%= f.collection_select :user_id, User.all, :id , :name  %>
+</p>
+
+<P>
+<%= f.label :reserved_On %>
+ <span class="date">
+      <%= f.date_select :reserved_on , :order => [:month, :day, :year] %>
+</span>
+</P>
+<p>
+<%= f.label :due_on %>
+ <span class="date">
+      <%= f.date_select :due_on , :order => [:month, :day, :year] %>
+</span>
+</p>
+<p>
+	<%= f.submit %>
+	<%= button_to 'Cancel', reservations_path %>
+</P>
+<% end %>

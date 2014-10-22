@@ -12,11 +12,12 @@ Library::Application.routes.draw do
 
   get    "/reservations"            => "reservations#index",    as: 'reservations'
   get    "/reservations/new"        => "reservations#new",      as: 'new_reservation'
-  get    "/reservations/:id"        => "reservations#show",     as: 'reservation'
+  get    "/reservation/"    => "reservations#show",     as: 'reservation'
   post   "/reservations"            => "reservations#create"
   get    "/reservations/:id/edit"   => "reservations#edit",     as: 'edit_reservation'
   patch  "/reservations/:id"        => "reservations#update"
   delete "/reservations/:id"        => "reservations#destroy"
+  resources :reservations
 
   get 'admin' => 'admin#index'
   controller :sessions do 
@@ -46,6 +47,7 @@ Library::Application.routes.draw do
 
 
   resources :books do
+    resources :reservations
      get 'page/:page', :action => :index, :on => :collection
   end
   root 'books#index'
