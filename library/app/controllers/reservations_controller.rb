@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
 
 def set_reservation
   @reservation = Reservation.find(params[:id])
+    
 end
 
 def index
@@ -14,11 +15,13 @@ def show
 end
 
 def new
-  @reservation = Reservation.new
-end
+ #   @book = Book.find(params[:id])
+ #   @reservation = @book.reservations.new
+  end
 
 def create
-  @reservation = Reservation.new(reservation_params)
+  #@reservation = Reservation.new(reservation_params)
+  @reservation = @book.reservations.new(reservation_params)
   if @reservation.save
     redirect_to @reservation, notice: "#{@reservation.reserved_on} was created!"
   else

@@ -11,7 +11,7 @@
   <p><label>Author:</label><%= link_to @book.author.name, @book.author %> <br />
 </article>
 
-<%= button_to 'Reserve', reservations_new_path %>
+<%= link_to 'Reserve', new_reservation_path %>
 <% if session[:id] and session[:admin] %>
 <%= link_to 'All Books', books_path %>
 | <%= link_to 'Edit', edit_book_path(@book) %>
