@@ -3,7 +3,7 @@
 <p><label>Title:  </label><%=  @book.title  %></p>
 <article class="reservation">
   <header>
-    <h2><%= @reservation.book_id %></h2>
+    <h2><%=  %></h2>
   </header>
   <%= image_tag @reservation.book.image_cover_url %>   
   <p><label>Author:</label> <%= @reservation.book.author.name %></p>
