@@ -10,23 +10,29 @@ def index
   # This is mapped to reservations_path in routes file
   # This needs to pull All reservations from DB
   @reservations = Reservation.order(:reserved_on).page(params[:page])
+  @book = Book.find(4)
+  @reservation = Reservation.find(1)
+
 end
 
 def show
-  #@reservation = Reservation.find(params[:id])
+  @reservation = Reservation.find(1)
+  @book = Book.find(4)
+end
   # This is mapped to reservation_path in routes file 
   # TODO: Need to write a query to pull back Reservations for this user_id
   
-end
+
 
 def new
-  @reservation = Reservation.new
+  @book = Book.new
+  @reservation = @book.reservations.new
 end
 
 def create
   #@reservation = Reservation.new(reservation_params)
-  @book = Book.find(params[:book_id])
-  @user = User.find(params[:user_id])
+  @book = Book.find(4)
+  @user = User.find(1)
   @reservation = @book.reservations.new(reservation_params)
   if @reservation.save
     redirect_to @reservation, notice: "#{@reservation.reserved_on} was created!"
@@ -47,14 +53,15 @@ def update
 end
 
 def destroy
+  @reservation = Reservation.find(reservation_params[:id])
   @reservation.destroy
-  redirect_to reservation_url
+  redirect_to reservations_url
 end
 
 private
 
 def reservation_params
-  params.require(:reservation).permit(:reserved_on)
+  params.require(:reservation).permit(:user_id, :book_id , :reserved_on , :due_on)
 end
 
 

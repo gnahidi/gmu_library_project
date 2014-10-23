@@ -1,11 +1,11 @@
-<h1>Reservations#show</h1>
+<h1>Reservations Listing</h1>
 <p>You have the following books reserved</p>
-<% content_for :title, @reservation.book.title %>
+<p><label>Title:  </label><%=  @book.title  %></p>
 <article class="reservation">
   <header>
-    <h2><%= @reservation.book.book_id %></h2>
+    <h2><%= @reservation.book_id %></h2>
   </header>
-  <%= image_tag @reservation.book.image_cover_url %>  
+  <%= image_tag @reservation.book.image_cover_url %>   
   <p><label>Author:</label> <%= @reservation.book.author.name %></p>
   <p><label>Reserved On:</label> <%= @reservation.reserved_on %></p>
   <p><label>Due on:</label> <%= @reservation.due_on %></p>
