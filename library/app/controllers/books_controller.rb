@@ -6,7 +6,15 @@ def set_book
 end
 
 def index
-	@books = Book.order(:title).page(params[:page])
+	term = params[:search]
+	like_term = "%#{term}%"
+
+	if term
+    	the_books = Book.where( ["title like ? or isbn = ?", like_term, term ] )
+    else
+    	the_books = Book.all
+    end
+    @books = the_books.page(params[:page])
 end
 
 def show
