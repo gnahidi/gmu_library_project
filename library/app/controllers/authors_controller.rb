@@ -40,8 +40,15 @@ class AuthorsController < ApplicationController
   end
 
   def destroy
-    @author.destroy
-    redirect_to authors_url
+    if @author.books.empty?
+      @author.destroy
+      logger.debug "destroying #{@author.name}"
+      redirect_to authors_url, notice: "#{@author.name} was deleted!!"
+    else
+      logger.debug "NOT destroying #{@author.name}"
+      flash[:error] = "#{@author.name} cannot be deleted ... books still exist"
+      redirect_to @author
+    end
   end
 
   private
