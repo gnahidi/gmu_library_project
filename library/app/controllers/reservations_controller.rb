@@ -24,7 +24,7 @@ def create
   user = get_my_user
   reservation = user.reservations.new(book: book)
   if reservation.save
-    redirect_to reservations_path, notice: "#{reservation.reserved_on} was created!"
+    redirect_to reservations_path, notice: "#{reservation.reserved_on} You successfully reserved #{book.title}"
   else
     redirect_to book, error: "Something went wrong ..."
   end
