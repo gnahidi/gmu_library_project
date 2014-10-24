@@ -7,7 +7,9 @@
 
   <p><label>Birthdate:   <%= @author.dob                 %></label></p>
   <p><label>Nationality: <%= @author.nationality         %></label></p>
-  <p><label>Awards:      <%= @author.awards              %></label></p>
+  <% unless @author.awards.blank? %>
+    <p><label>Awards:      <%= @author.awards              %></label></p>
+  <% end %>
   <p><label>Biography:   <%= @author.biography           %></label></p>
   <p><label>Photo:       <%= image_tag @author.image_url %></label></p>
 
@@ -25,6 +27,10 @@
 
 
 <% @author.books.each do |book| %>
-  <p><%= book.title %></p>
+  <%= image_tag book.image_cover_url %>
+  <%= book.title %> by <%= @author.name %><br /><br />
 <% end %>
+
+
+
 
