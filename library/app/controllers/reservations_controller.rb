@@ -9,35 +9,24 @@ end
 def index
   # This is mapped to reservations_path in routes file
   # This needs to pull All reservations from DB
-  @reservations = Reservation.order(:reserved_on).page(params[:page])
-  @book = Book.find(4)
-  @reservation = Reservation.find(1)
-
+  @reservations = get_my_user.reservations.order(:reserved_on).page(params[:page])
+  
 end
 
 def show
-  @reservation = Reservation.find(1)
-  @book = Book.find(4)
+  @reservation = Reservation.find(params[:id])
+  @book = Book.find(params[:id])
 end
-  # This is mapped to reservation_path in routes file 
-  # TODO: Need to write a query to pull back Reservations for this user_id
   
 
-
-def new
-  @book = Book.new
-  @reservation = @book.reservations.new
-end
-
 def create
-  #@reservation = Reservation.new(reservation_params)
-  @book = Book.find(4)
-  @user = User.find(1)
-  @reservation = @book.reservations.new(reservation_params)
-  if @reservation.save
-    redirect_to @reservation, notice: "#{@reservation.reserved_on} was created!"
+  book = Book.find(params[:book_id])
+  user = get_my_user
+  reservation = user.reservations.new(book: book)
+  if reservation.save
+    redirect_to reservations_path, notice: "#{reservation.reserved_on} was created!"
   else
-    render :new
+    redirect_to book, error: "Something went wrong ..."
   end
 end
 
@@ -58,10 +47,7 @@ def destroy
   redirect_to reservations_url
 end
 
-private
-
-def reservation_params
-  params.require(:reservation).permit(:user_id, :book_id , :reserved_on , :due_on)
+def overdue
 end
 
 

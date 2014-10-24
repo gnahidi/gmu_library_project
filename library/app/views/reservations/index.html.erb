@@ -2,9 +2,10 @@
 <h1>All Reservations</h1>
 <ol>
 	<% @reservations.each do |reservation| %>
- 	<%= image_tag @reservation.book.image_cover_url %><br />
-  	<p><label>reserved_on:</label><%= @reservation.reserved_on %> <br />
-  	<p><label>due_on:</label><%= @reservation.due_on %><br />
+ 	<%= image_tag reservation.book.image_cover_url %><br />
+  	<p><label>name: </label><%= reservation.book.title %><br />
+  	<p><label>reserved_on:</label><%= reservation.reserved_on %> <br />
+  	<p><label>due_on:</label><%= reservation.due_on %><br />
   	<% end %>
 </ol>
 </article>

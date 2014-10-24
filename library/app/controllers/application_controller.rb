@@ -9,6 +9,12 @@ class ApplicationController < ActionController::Base
   		redirect_to login_url, notice: "Please log in:"
   	end
   end
+
+  def get_my_user
+    User.find session[:id]
+  end
+
 end
+
 
   #protect_from_forgery with: :exception
