@@ -4,12 +4,16 @@
 <h1>My Reservations</h1>
 <ol>
 	<% @reservations.each do |reservation| %>
- 	<%= image_tag reservation.book.image_cover_url %><br />
-  	<p><label>BooK Name: </label><%= reservation.book.title %><br />
+ 	<%= image_tag reservation.book.image_cover_url %>
+ 	<br />
+  	<p><label>Book Name: </label><%= reservation.book.title %><br />
   	<p><label>Book was reserved on:</label><%= reservation.reserved_on %> <br />
   	<p><label>Book due back on:</label><%= reservation.due_on %><br />
-  	<% end %>
+  	<%= button_to 'Return Book', @reservation,method: :delete,data: { confirm: 'Do you want to return?' } %>
+ 	<% end %>
 </ol>
 </article>
+
+
 <%= paginate @reservations %>
 
