@@ -52,13 +52,6 @@ Library::Application.routes.draw do
 
   root 'books#index'
   
-#  resources :authors do
-#    resources :books
-#     get 'page/:page', :action => :index, :on => :collection
-#  end
-#
-# root 'authors#index'
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

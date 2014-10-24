@@ -5,11 +5,11 @@
     <h2><%= @author.name %></h2>
   </header>
 
-  <p><label>Birthdate:   <%= @author.dob                 %></label></p><br />
-  <p><label>Nationality: <%= @author.nationality         %></label></p><br />
-  <p><label>Awards:      <%= @author.awards              %></label></p><br />
-  <p><label>Biography:   <%= @author.biography           %></label></p><br />
-  <p><label>Photo:       <%= image_tag @author.image_url %></label></p><br />
+  <p><label>Birthdate:   <%= @author.dob                 %></label></p>
+  <p><label>Nationality: <%= @author.nationality         %></label></p>
+  <p><label>Awards:      <%= @author.awards              %></label></p>
+  <p><label>Biography:   <%= @author.biography           %></label></p>
+  <p><label>Photo:       <%= image_tag @author.image_url %></label></p>
 
 </article>
 
@@ -21,9 +21,10 @@
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
 
-<br />
-<br />
-  <p>Publications</p><br />
-<br />
-<br />
+  <h3>Publications</h3>
+
+
+<% @author.books.each do |book| %>
+  <p><%= book.title %></p>
+<% end %>
 
