@@ -9,8 +9,11 @@ def index
 	term = params[:search]
 	like_term = "%#{term}%"
 
+	#logger.debug "term is: #{term}"
+	#logger.debug "like_term is: #{like_term}"
+
 	if term
-    	the_books = Book.where( ["title like ? or isbn = ?", like_term, term ] )
+    	the_books = Book.includes(:author).where( ["title like ? or isbn = ? or authors.name like ?", like_term, term, like_term ] )
     else
     	the_books = Book.all
     end
