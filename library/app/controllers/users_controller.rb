@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     if session[:id] and session[:admin]
-      @users = User.order(:name)
+      @users = User.order(:name).page(params[:page])
     else
       redirect_to books_path, notice: "Please log in as admin"
     end
