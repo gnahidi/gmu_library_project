@@ -1,22 +1,31 @@
-<%= form_tag books_path, :method => 'get' do %>
-  <p>
+<article class="book">
+  <% if params[:search] %>
+    <h3>Search Results</h3>
+  <% else %>
+    <h3>All Books</h3>
+  <% end %>
+  <%= form_tag books_path, :method => 'get' do %>
+    <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>
-<article class="book">
-<h1>All Books</h1>
-<ol>
+    </p>
+  <% end %>
+
   <% @books.each do |book| %>
+  <%= image_tag book.image_cover_url, :width=>300, :height=>300 %>
+  <big><%= link_to(book.title, book) %></big>
+  by <%= book.author.name %>
+  <br><br>
+  <!--
   <%= image_tag book.image_cover_url %><br />
   <p><label>Title:</label><%= link_to(book.title, book) %> <br />
   <p><label>Genre:</label><%= book.genre %><br />
   <p><label>Abstract:</label><%= book.abstract %> <br />
   <p><label>Pages:</label>Total Number of pages are : <%= book.pages %><br />
   <p><label>Published On:</label>This book was published on :  <%= book.published_on %> <br />
-  <p><label>Available for Reservation:</label><%=book.total_in_library %>  <br />
+  <p><label>Available for Reservation:</label><%=book.total_in_library %>  <br />-->
   	<% end %>
-</ol>
+
 </article>
 <%= paginate @books %>
 
