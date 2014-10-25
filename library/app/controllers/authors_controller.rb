@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
 
-  skip_before_action :authorize
+  #skip_before_action :authorize
   before_action :set_author, only: [ :show, :edit, :update, :destroy ]
   
   def set_author
@@ -16,7 +16,11 @@ class AuthorsController < ApplicationController
   end
 
   def new
+    if session[:admin]
   	@author = Author.new
+  else
+    redirect_to books_path, notice: "Please log in as admin"
+  end
   end
 
   def create

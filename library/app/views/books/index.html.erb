@@ -2,7 +2,7 @@
   <% if params[:search] %>
     <h3>Search Results</h3>
   <% else %>
-    <h3>All Books</h3>
+    <h1>All Books</h1>
   <% end %>
   <%= form_tag books_path, :method => 'get' do %>
     <p>
@@ -12,7 +12,7 @@
   <% end %>
 
   <% @books.each do |book| %>
-  <%= image_tag book.image_cover_url, :width=>300, :height=>300 %>
+  <%= image_tag book.image_cover_url, :width=>250, :height=>300 %>
   <big><%= link_to(book.title, book) %></big>
   by <%= book.author.name %>
   <br><br>

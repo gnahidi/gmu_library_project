@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize
+  #skip_before_action :authorize
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.order(:name)
+    if session[:admin]
+      @users = User.order(:name)
+    else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
   end
 
   # GET /users/1

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
   	elsif user and user.authenticate(params[:password])
       session[:id] = user.id
       session[:admin] = false
-      redirect_to users_url
+      redirect_to books_url
     else
   		redirect_to login_url, alert: "Invalid user/password combination"  		
     end
