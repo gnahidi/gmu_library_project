@@ -2,4 +2,10 @@
 
 <%= render 'form' %>
 
+<% if session[:id] %>
+<%= link_to 'Back', users_path %>
+<% end %>
+
+<% if session[:id].nil? %>
 <%= link_to 'Back', login_path %>
+<% end %>

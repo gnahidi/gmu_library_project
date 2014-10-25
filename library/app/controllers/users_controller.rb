@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  #skip_before_action :authorize
+  skip_before_action :authorize
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    if session[:admin]
+    if session[:id] and session[:admin]
       @users = User.order(:name)
     else
       redirect_to books_path, notice: "Please log in as admin"
@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if session[:id] and session[:admin]
+
+    else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
   end
 
   # GET /users/new
@@ -24,6 +29,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if session[:id] and session[:admin]
+
+    else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
   end
 
   # POST /users
@@ -45,6 +55,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+  if session[:id] and session[:admin]
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_url, 
@@ -55,11 +66,15 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  else
+    redirect_to books_path, notice: "Please log in as admin"
+  end
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+  if session[:id] and session[:admin]
     begin
       @user.destroy
       flash[:notice]="User #{@user.name} deleted"
@@ -70,6 +85,9 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  else
+    redirect_to books_path, notice: "Please log in as admin"
+  end
   end
 
   private
