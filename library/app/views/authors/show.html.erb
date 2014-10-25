@@ -16,19 +16,19 @@
 </article>
 
   <%= link_to 'All Authors', authors_path %>
-
+<% if session[:admin] %>
 | <%= link_to 'Edit', edit_author_path(@author) %>
 
   <%= button_to 'Delete ', @author,
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %>
-
+<% end %>
   <h3>Publications</h3>
 
 
 <% @author.books.each do |book| %>
   <%= image_tag book.image_cover_url %>
-  <%= book.title %> by <%= @author.name %><br /><br />
+  <%= link_to(book.title, book) %> by <%= @author.name %><br /><br />
 <% end %>
 
 

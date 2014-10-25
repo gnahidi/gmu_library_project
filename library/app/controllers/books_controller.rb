@@ -25,7 +25,11 @@ def show
 end
 
 def new
-	@book = Book.new
+	if session[:id] and session[:admin]
+      @book = Book.new
+    else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
 end
 
 def create
@@ -38,19 +42,32 @@ def create
 end
 
 def edit
+	if session[:id] and session[:admin]
+
+    else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
 end
 
 def update
-	if @book.update(book_params)
-		redirect_to @book, notice: "#{@book.title} was updated!"
-	else
+	if session[:id] and session[:admin]
+      if @book.update(book_params)
+	    redirect_to @book, notice: "#{@book.title} was updated!"
+	  else
 		render :new
-	end
+	  end
+	else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
 end
 
 def destroy
-	@book.destroy
-	redirect_to books_url
+	if session[:id] and session[:admin]
+	  @book.destroy
+	  redirect_to books_url
+	else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
 end
 
 private

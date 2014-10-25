@@ -9,7 +9,7 @@ class AuthorsController < ApplicationController
 
   def index
   	@available_at = Time.now
-  	@authors = Author.all
+  	@authors = Author.order(:name).page(params[:page])
   end
 
   def show
@@ -24,34 +24,51 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.new(author_params)
-    if @author.save
-      redirect_to @author, notice: "#{@author.name} was created!!"
+    if session[:id] and session[:admin]
+      @author = Author.new(author_params)
+      if @author.save
+        redirect_to @author, notice: "#{@author.name} was created!!"
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to books_path, notice: "Please log in as admin"
     end
   end
 
   def edit
+    if session[:id] and session[:admin]
+
+    else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
   end
 
   def update
-    if @author.update(author_params)
-      redirect_to @author, notice: "#{@author.name} was updated!!"
+    if session[:id] and session[:admin]
+      if @author.update(author_params)
+        redirect_to @author, notice: "#{@author.name} was updated!!"
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to books_path, notice: "Please log in as admin"
     end
   end
 
   def destroy
-    if @author.books.empty?
-      @author.destroy
-      logger.debug "destroying #{@author.name}"
-      redirect_to authors_url, notice: "#{@author.name} was deleted!!"
+    if session[:id] and session[:admin]
+      if @author.books.empty?
+        @author.destroy
+        logger.debug "destroying #{@author.name}"
+        redirect_to authors_url, notice: "#{@author.name} was deleted!!"
+      else
+        logger.debug "NOT destroying #{@author.name}"
+        flash[:error] = "#{@author.name} cannot be deleted ... books still exist"
+        redirect_to @author
+      end
     else
-      logger.debug "NOT destroying #{@author.name}"
-      flash[:error] = "#{@author.name} cannot be deleted ... books still exist"
-      redirect_to @author
+      redirect_to books_path, notice: "Please log in as admin"
     end
   end
 
