@@ -42,7 +42,7 @@ def update
 end
 
 def destroy
-  @reservation = Reservation.find(reservation_params[:id])
+  #@reservation = Reservation.find(reservation_params[:id])
   @reservation.destroy
   redirect_to reservations_url
 end

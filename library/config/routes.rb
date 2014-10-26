@@ -5,7 +5,7 @@ Library::Application.routes.draw do
   get    "/reservation/"            => "reservations#show",     as: 'reservation'
   post   "/reservations"            => "reservations#create"
   #get    "/reservations/:id/edit"   => "reservations#edit",     as: 'edit_reservation'
-  #patch  "/reservations/:id"        => "reservations#update"
+  patch  "/reservations/:id"        => "reservations#update"
   delete "/reservations/:id"        => "reservations#destroy"
   resources :reservations
 
