@@ -9,7 +9,7 @@
   	<p><label>Book Name: </label><%= reservation.book.title %><br />
   	<p><label>Book was reserved on:</label><%= reservation.reserved_on %> <br />
   	<p><label>Book due back on:</label><%= reservation.due_on %><br />
-  	<%= button_to 'Return Book', reservation.book,method: :delete,data: { confirm: 'Do you want to return?' } %>
+  	<%= button_to 'Return Book', @reservation,method: :delete,data: { confirm: 'Do you want to return?' } %>
  	<% end %>
 </ol>
 </article>
