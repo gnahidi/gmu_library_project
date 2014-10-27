@@ -12,7 +12,7 @@
   		<p><label>Book id:</label><%= reservation.id %><br />
   	<p><label>Book available:</label><%= reservation.book.total_in_library %><br />
 
-  	<%= button_to 'Return Book', user_book_reservation_path(session[:user_id], reservation.book.id, reservation.id),method: :delete,data: { confirm: 'Do you want to return?' } %><br>
+  	<%= button_to 'Return Book', user_book_reservation_path(session[:id], reservation.book.id, reservation.id),method: :delete,data: { confirm: 'Do you want to return?' } %><br>
  	<% end %>
 </ol>
 </article>
