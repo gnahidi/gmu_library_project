@@ -18,7 +18,7 @@ resources :users do
     end
     resources :reservations, only: [:index, :show]
   end
-  
+
   get 'admin' => 'admin#index'
   controller :sessions do 
     get 'login' => :new
@@ -54,6 +54,13 @@ resources :users do
   get    "/authors/:id/edit" => "authors#edit",   as: 'edit_author'
   patch  "/authors/:id"      => "authors#update"
 
+resources :reservations do
+    collection do
+      get 'page/:page', :action => :index
+      get 'overdue'
+      get 'overdue/page/:page', :action => :bargains
+    end
+  end
 
   resources :books do
     resources :reservations

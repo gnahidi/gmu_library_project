@@ -12,10 +12,13 @@ def index
   @reservations = Reservation.joins(:book).where('user_id = ?', session[:id]).order(:reserved_on).page(params[:page]) 
 end
 
-#def show
-#  @reservation = Reservation.find(params[:id])
-#  @book = Book.find(params[:id])
-#end
+def show
+  if session[:admin]
+  @reservations = Reservation.joins(:book).where('user_id = ?', session[:id]).order(:reserved_on).page(params[:page]) 
+else
+      redirect_to books_path, notice: "Please log in as admin"
+    end
+end
 
 def create
   #book = Book.find(params[:book_id])
@@ -64,6 +67,8 @@ def destroy
 end
 
 def overdue
+  @reservations = list_overdue_books.overduebooks
+    respond_with @reservations
 end
 
 

@@ -1,20 +1,21 @@
 <!-- This page is obsolete DO NOT EDIT or USE -->
 
-<h1>Reservations Listing</h1>
-<p>You have the following books reserved</p>
-<p><label>Title:  </label><%=  @book.title  %></p>
-<article class="reservation">
-  <header>
-    <h2><%=  %></h2>
-  </header>
-  <%= image_tag @reservation.book.image_cover_url %>   
-  <p><label>Author:</label> <%= @reservation.book.author.name %></p>
-  <p><label>Reserved On:</label> <%= @reservation.reserved_on %></p>
-  <p><label>Due on:</label> <%= @reservation.due_on %></p>
-  </article>
-<%= button_to 'Return Book', @reservation,
+<h1>Overdue Listing</h1>
+<p>The following books are reserved:</p>
+<% @reservations.each do |reservation| %>
 
-               method: :delete,
+  <%= image_tag(reservation.book.image_cover_url, size: "250x300") %>
+  <%= link_to(reservation.book.title, reservation.book) %>
+      
+  <p>
+  Reserved By: <%= reservation.user.name %> <br>
+  Reserved On: <%= reservation.reserved_on.strftime('%B %d, %Y') if reservation.reserved_on %> <br>
+  Due On: <%= reservation.due_on.strftime('%B %d, %Y') if reservation.due_on %>
+  </p>
 
-               data: { confirm: 'Do you want to return?' } %>
+  <p>The following books are Overdue:</p>
+  <% if reservation.due_on < Time.now.to_date %>
+  Over Due!
+  <% end %>
 
+<% end %>
