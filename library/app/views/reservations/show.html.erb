@@ -12,10 +12,5 @@
   Reserved On: <%= reservation.reserved_on.strftime('%B %d, %Y') if reservation.reserved_on %> <br>
   Due On: <%= reservation.due_on.strftime('%B %d, %Y') if reservation.due_on %>
   </p>
-
-  <p>The following books are Overdue:</p>
-  <% if reservation.due_on < Time.now.to_date %>
-  Over Due!
-  <% end %>
-
+  
 <% end %>
