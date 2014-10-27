@@ -11,9 +11,10 @@
   <p><label>Author:</label><%= link_to @book.author.name, @book.author %> <br />
   	<p><label>Available to Reserve:</label><%= @book.total_in_library %> <br />
 </article>
+<% if @book.total_in_library.nil? %>
 
 <%= link_to 'Reserve', reservations_path+"?book_id=#{@book.id}" , method: :post %>
-| 
+| <% end %>
 <%= link_to 'All Books', books_path %>
 |
 <%= link_to "All Authors", authors_path %><br>
