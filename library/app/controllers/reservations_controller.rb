@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  respond_to :html, :xml, :json
   #before_action :set_reservation, only: [:edit, :update, :destroy]
 
 #def set_reservation
