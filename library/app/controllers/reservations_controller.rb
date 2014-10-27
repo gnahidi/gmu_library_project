@@ -23,7 +23,7 @@ def create
   #reservation = user.reservations.new(book: book)
   @book = Book.find(params[:book_id])
   @book.total_in_library = @book.total_in_library - 1
-  @user = User.find(session[:user_id])
+  @user = User.find(session[:id])
   @reservation = Reservation.new(user_id: @user.id, book_id: @book.id)
   if @reservation.save and @book.save
     redirect_to reservations_path, notice: "#{@reservation.reserved_on} You successfully reserved #{@book.title}"
