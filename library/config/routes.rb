@@ -2,13 +2,23 @@ Library::Application.routes.draw do
 
   get    "/reservations"            => "reservations#index",    as: 'reservations'
   #get    "/reservations/new"        => "reservations#new",      as: 'new_reservation'
-  get    "/reservation/"            => "reservations#show",     as: 'reservation'
+  get    "/reservations/"            => "reservations#show",     as: 'reservation'
   post   "/reservations"            => "reservations#create"
   #get    "/reservations/:id/edit"   => "reservations#edit",     as: 'edit_reservation'
-  patch  "/reservations/:id"        => "reservations#update"
-  delete "/reservations/:id"        => "reservations#destroy"
+  #patch  "/reservations/:id"        => "reservations#update"
+  delete "/reservations/"        => "reservations#destroy"
   resources :reservations
 
+resources :users do
+    collection do
+      get 'page/:page', :action => :index
+    end
+    resources :books do
+      resources :reservations, only: [:create, :destroy]
+    end
+    resources :reservations, only: [:index, :show]
+  end
+  
   get 'admin' => 'admin#index'
   controller :sessions do 
     get 'login' => :new
