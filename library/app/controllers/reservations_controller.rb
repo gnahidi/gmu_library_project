@@ -54,7 +54,7 @@ def destroy
       @book.total_in_library = @book.total_in_library + 1
 
       if @book.save
-        format.html { redirect_to user_reservations_path(session[:user_id]), notice: "#{@book.title} was returned successfully." }
+        format.html { redirect_to user_reservations_path(session[:id]), notice: "#{@book.title} was returned successfully." }
         format.json { head :no_content }
       else
         format.html { render :new }
